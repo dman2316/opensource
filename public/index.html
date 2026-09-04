@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>Free Movies for Smart TV</title>
+  <style>
+    :root { --bg:#071728; --card:#0b1620; --muted:#9fb0c8; --accent:#6ad1ff; color-scheme: dark; }
+    html,body { height:100%; margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,#041225,#081827); color:#eaf6ff; }
+    .app { max-width:1200px; margin:12px auto; padding:12px; display:flex; gap:12px; }
+    .left { width:520px; min-width:360px; }
+    .search { display:flex; gap:8px; margin-bottom:12px; }
+    input[type="search"] { flex:1; padding:14px; font-size:20px; border-radius:8px; border: none; background:rgba(255,255,255,0.03); color:inherit; }
+    button { padding:12px 16px; font-size:18px; border-radius:8px; border:0; background:var(--accent); color:#052028; cursor:pointer; }
+    .list { background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; max-height:76vh; overflow:auto; }
+    .item { display:flex; gap:12px; padding:10px; border-radius:8px; align-items:center; margin-bottom:8px; background:rgba(255,255,255,0.01); }
+    .thumb { width:84px; height:56px; background:#082430; border-radius:6px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:12px; overflow:hidden; }
+    .meta { flex:1; }
+    .title { font-size:18px; font-weight:600; }
+    .sub { color:var(--muted); font-size:13px; }
+    .play { padding:8px 12px; background:#1dd06b; border-radius:8px; color:#032016; font-weight:700; cursor:pointer; border:0; }
+    .player { flex:1; display:flex; flex-direction:column; gap:8px; }
+    video { width:100%; height:56vh; background:black; border-radius:8px; outline:2px solid rgba(255,255,255,0.03); }
+    .details { background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; color:var(--muted); max-height:28vh; overflow:auto; }
+    @media (max-width:920px) { .app { flex-direction:column } .left{width:100%} video{height:40vh} }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="left">
+      <div class="search">
+        <input id="q" type="search" placeholder="Search free movies (e.g., 'silent', 'chaplin', 'horror', 'documentary')" />
+        <button id="searchBtn">Search</button>
+      </div>
+      <div class="list" id="results" role="list"></div>
+    </div>
+    <div class="player">
+      <video id="player" controls crossorigin playsinline></video>
+      <div class="details" id="details">Select a movie to see details and playable files.</div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
