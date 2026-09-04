@@ -1,0 +1,15 @@
+[Unit]
+Description=Free Movies TV Node App
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/free-movies-tv
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+Environment=PORT=3000
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
